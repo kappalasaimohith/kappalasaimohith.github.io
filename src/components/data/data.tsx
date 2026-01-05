@@ -11,6 +11,16 @@ export const about = [
 
 
 export const experiences = [
+  {
+    jobTitle: 'AI Engineering Intern',
+    company: 'Deep Learning Titans',
+    duration: 'November 2025 - present',
+    description: [
+      'Extracted profiles from external websites using Apify for automated data collection and analysis',
+      'Used DeepSeek API to analyze data and score leads based on quality',
+      'Created personalized outreach messages using lead scores using DeepSeek API'
+    ]
+  },
   // {
   //   jobTitle: 'Data Analyst Intern',
   //   company: 'Uptoskills',
@@ -26,9 +36,9 @@ export const experiences = [
     company: 'G. A. Digital Solutions',
     duration: 'May 2024 - July 2024',
     description: [
-      'Contributed to the development of a Recruitment Tracking application using React and Django.',
-      'Gained hands-on experience with agile methodologies, improving skills in collaboration, problem-solving, and efficient project delivery.',
-      'Implemented best practices in software development and worked with cross-functional teams to enhance the project’s efficiency.',
+      'Developed core modules in a recruitment management platform, including user authentication, role-based access control, and resume parsing using React and Django.',
+      'Implemented secure registration and login workflows with structured dashboards for clients, recruiters, and candidates, and automated role-based permission logic.',
+      'Designed and built responsive UI components such as sidebars, status trackers, and job posting forms to streamline navigation and improve user experience across modules.',
     ],
   },
 ];
@@ -60,6 +70,19 @@ export const projects = [
     tech: ['React', 'TypeScript', 'shadcn/ui'],
     github: 'https://github.com/kappalasaimohith/edit-sync-frontend',
     demo: 'https://edit-sync.vercel.app/',
+    image: '/placeholder.svg',
+  },
+  {
+    title: 'Visitor Management System',
+    description: [
+      "MyGate-style community platform where residents pre-authorise visitors, guards manage check-in/out, and admins oversee operations.",
+      "Built with Supabase (Postgres + RLS) for secure authentication and strict role-based access control across residents, guards, and admins.",
+      "Supports real-time visitor approvals, denials along with an AI Copilot that executes validated user commands through natural language chat.",
+      "Every action creates an immutable audit trail ensuring transparency and accountability throughout the system for admins."
+    ],
+    tech: ['Supabase', 'PostgreSQL', 'RLS', 'Node.js', 'React', 'Vite', 'Gemini API'],
+    github: 'https://github.com/visitor-management-system',
+    demo: 'https://visitor-management-system-gray.vercel.app/',
     image: '/placeholder.svg',
   },
   {
@@ -141,7 +164,7 @@ export const skillCategories = [
     category: "Backend Development",
     skills: [
       "Node.js", "Express", "Python", "Django", "Next.js",
-      "REST API", "MongoDB", "PostgreSQL"
+      "REST API", "MongoDB", "PostgreSQL", "Supabase",
     ]
   },
   {
@@ -159,7 +182,7 @@ export const skillCategories = [
   {
     category: "Cloud & Hosting",
     skills: [
-      "Vercel", "Netlify", "Render", "Github Pages (gh-pages)"
+      "Vercel", "Netlify", "Render", "Github Pages (gh-pages)", // "AWS (basic)"
     ]
   },
   // {
