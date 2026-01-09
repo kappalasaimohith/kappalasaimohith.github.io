@@ -14,7 +14,7 @@ export const experiences = [
   {
     jobTitle: 'AI Engineering Intern',
     company: 'Deep Learning Titans',
-    duration: 'November 2025 - present',
+    duration: 'November 2025 - December 2025',
     description: [
       'Extracted profiles from external websites using Apify for automated data collection and analysis',
       'Used DeepSeek API to analyze data and score leads based on quality',
