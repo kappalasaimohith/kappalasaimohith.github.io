@@ -1,5 +1,6 @@
 import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
 // import { FaWhatsapp } from 'react-icons/fa';
+import {FaXTwitter} from 'react-icons/fa6';
 
 export const about = [
   {
@@ -203,7 +204,7 @@ export const skillCategories = [
 export const socialLinks = [
   { href: 'https://linkedin.com/in/kappalasaimohith', label: 'LinkedIn', icon: <FaLinkedin /> },
   { href: 'https://github.com/kappalasaimohith', label: 'GitHub', icon: <FaGithub /> },
-  { href: 'https://x.com/KappalaSaiMohit', label: 'Twitter', icon: <FaTwitter /> }, 
+  { href: 'https://x.com/KappalaSaiMohit', label: 'Twitter', icon: <FaXTwitter /> }, 
   { href: 'https://instagram.com/saimohithk', label: 'Instagram', icon: <FaInstagram /> },
   // { href: 'https://t.me/kappalasaimohith', label: 'Telegram', icon: <FaTelegram /> },
   // { href: 'https://wa.me/917569400290', label: 'WhatsApp', icon: <FaWhatsapp /> },
