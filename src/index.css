@@ -102,6 +102,22 @@
   html {
     @apply scroll-smooth;
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-navy;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate/20 rounded hover:bg-highlight/50 transition-colors;
+  }
+
+  ::selection {
+    @apply bg-highlight/30 text-highlight;
+  }
 }
 
 @layer components {
@@ -109,7 +125,7 @@
     @apply text-3xl md:text-4xl font-bold text-slate-lighter mb-6 flex items-center;
   }
 
-  #skills{
+  #skills {
     @apply bg-navy-dark;
   }
 
@@ -143,6 +159,7 @@
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -154,6 +171,7 @@
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -165,6 +183,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -182,4 +201,3 @@
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
-

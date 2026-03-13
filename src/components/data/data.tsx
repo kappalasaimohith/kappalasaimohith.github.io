@@ -1,51 +1,69 @@
-import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
-// import { FaWhatsapp } from 'react-icons/fa';
-import {FaXTwitter} from 'react-icons/fa6';
+import { FaLinkedin, FaGithub, FaInstagram, FaDiscord } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
+/* =========================
+   BASIC INFO
+========================= */
+export const info = {
+  greeting: "Hello, I'm ",
+  name: 'Sai Mohith Kappala',
+  title: 'Full-Stack Developer',
+  tagline: 'Building scalable, high-performance web applications',
+};
+
+/* =========================
+   ABOUT
+========================= */
 export const about = [
   {
-    about_me: `I'm a developer passionate about creating seamless and scalable web applications. I specialize in React, Node.js, MongoDB, Django, and I thrive on complex problems to enhance user experiences.
-              I believe in continuous learning and collaboration, tackling complex challenges with innovative solutions.
-              Outside of coding, I like exploring new tech, playing chess, and spending time outdoors.`,
+    about_me: `I’m a Full-Stack Developer focused on building scalable, high-performance web applications. 
+My work ranges from real-time tools and systems to AI integrations that improve user experiences. 
+I enjoy solving complex problems using modern technologies like React, Node.js, Supabase, and Docker. 
+Outside of coding, I’m passionate about competitive problem solving, exploring emerging tech, and playing chess.`,
   },
 ];
 
 
+export const technologies = [
+  "JavaScript (ES6+)",
+  "React",
+  "Node.js",
+  "TypeScript",
+  "Tailwind CSS",
+  "MongoDB",
+  "Next.js",
+  "Go",
+];
+
+/* =========================
+   EXPERIENCE
+========================= */
 export const experiences = [
   {
-    jobTitle: 'AI Engineering Intern',
-    company: 'Deep Learning Titans',
-    duration: 'November 2025 - December 2025',
+    jobTitle: "AI Engineering Intern",
+    company: "Deep Learning Titans",
+    duration: "Nov 2025 – Dec 2025",
     description: [
-      'Extracted profiles from external websites using Apify for automated data collection and analysis',
-      'Used DeepSeek API to analyze data and score leads based on quality',
-      'Created personalized outreach messages using lead scores using DeepSeek API'
-    ]
+      "Automated lead data extraction using Apify for large-scale profile analysis.",
+      "Implemented AI-driven lead scoring using DeepSeek API.",
+      "Generated personalized outreach messages based on lead quality.",
+    ],
   },
-  // {
-  //   jobTitle: 'Data Analyst Intern',
-  //   company: 'Uptoskills',
-  //   duration: 'January 2025 - April 2025',
-  //   description: [
-  //     'Collaborated with a team to collect, analyze, clean, and interpret data on engineering colleges.',
-  //     'Used Python and Power BI to create interactive dashboards and reports, improving the clarity and effectiveness of data presentation.',
-  //     'Developed a strong understanding of data analysis and data-driven decision-making processes.'
-  //   ],
-  // },
   {
-    jobTitle: 'Full Stack Developer Intern',
-    company: 'G. A. Digital Solutions',
-    duration: 'May 2024 - July 2024',
+    jobTitle: "Full Stack Developer Intern",
+    company: "G. A. Digital Solutions",
+    duration: "May 2024 – Jul 2024",
     description: [
-      'Developed core modules in a recruitment management platform, including user authentication, role-based access control, and resume parsing using React and Django.',
-      'Implemented secure registration and login workflows with structured dashboards for clients, recruiters, and candidates, and automated role-based permission logic.',
-      'Designed and built responsive UI components such as sidebars, status trackers, and job posting forms to streamline navigation and improve user experience across modules.',
+      "Built core modules for a recruitment management platform using React and Django.",
+      "Implemented secure authentication and role-based access control (RBAC).",
+      "Designed responsive dashboards and forms to improve usability.",
     ],
   },
 ];
 
-
-
+/* =========================
+   PROJECTS
+========================= */
 export const projects = [
   {
     title: 'Online Compiler',
@@ -58,7 +76,6 @@ export const projects = [
     tech: ['Next.js', 'Node.js', 'CodeMirror', 'Docker'],
     github: "https://github.com/kappalasaimohith/online_compiler_frontend",
     demo: 'https://online-compiler-frontend-phi.vercel.app/',
-    image: '/placeholder.svg',
   },
   {
     title: 'Edit Sync',
@@ -71,7 +88,6 @@ export const projects = [
     tech: ['React', 'TypeScript', 'shadcn/ui'],
     github: 'https://github.com/kappalasaimohith/edit-sync-frontend',
     demo: 'https://edit-sync.vercel.app/',
-    image: '/placeholder.svg',
   },
   {
     title: 'Visitor Management System',
@@ -84,7 +100,6 @@ export const projects = [
     tech: ['Supabase', 'PostgreSQL', 'RLS', 'Node.js', 'React', 'Vite', 'Gemini API'],
     github: 'https://github.com/visitor-management-system',
     demo: 'https://visitor-management-system-gray.vercel.app/',
-    image: '/placeholder.svg',
   },
   {
     title: 'Portfolio Website',
@@ -97,7 +112,6 @@ export const projects = [
     tech: ['React', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
     github: 'https://github.com/kappalasaimohith/portfolio',
     demo: 'https://kappalasaimohith.vercel.app/',
-    image: '/placeholder.svg',
   },
   {
     title: "Chat App",
@@ -124,7 +138,6 @@ export const projects = [
     tech : ['Python', 'Streamlit', 'Pandas', 'BeautifulSoup', 'Requests', 'Transformers (Hugging Face)', 'PyTorch', 'Regex (re)'],
     github: 'https://github.com/kappalasaimohith/scraper',
     demo: 'https://ecommerce-scraper.streamlit.app/',
-    image: '/placeholder.svg',
   },
   {
     title: 'Weather App',
@@ -137,7 +150,6 @@ export const projects = [
     tech: ['Node.js', 'Express', 'HTML', 'CSS', 'JavaScript', 'Moment.js', 'express-rate-limit', 'dotenv', 'OpenWeather API'],
     github: 'https://github.com/kappalasaimohith/Weather',
     demo: 'https://weather-tc9g.onrender.com',
-    image: '/placeholder.svg',
   },
   {
     title: "NOTES-APP",
@@ -146,99 +158,138 @@ export const projects = [
       "Tailwind CSS for responsive and clean UI design.",
       "User authentication with secure login and session handling.",
       "Features include creating, reading, updating, and deleting notes with real-time updates."],
-    tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
-    github: "https://github.com/kappalasaimohith/NOTES-MERN",
-    demo: "https://notes-mern-beta.vercel.app/",
-    image: "/placeholder.svg",
-  },
-];
-
+      tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
+      github: "https://github.com/kappalasaimohith/NOTES-MERN",
+      demo: "https://notes-mern-beta.vercel.app/",
+      image: "/placeholder.svg",
+    },
+  ];
+  
+/* =========================
+   SKILLS
+========================= */
 export const skillCategories = [
   {
     category: "Frontend Development",
     skills: [
-      "HTML5", "CSS3", "JavaScript", "React", "TypeScript", 
-      "Next.js", "Tailwind CSS", "Bootstrap", "Material UI", "shadcn/ui", "Ant Design",
-    ]
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "Ant Design",
+      "shadcn/ui",
+    ],
   },
   {
     category: "Backend Development",
     skills: [
-      "Node.js", "Express", "Python", "Django", "Next.js",
-      "REST API", "MongoDB", "PostgreSQL", "Supabase",
-    ]
+      "Node.js",
+      "Express.js",
+      "Django",
+      "REST APIs",
+      "WebSockets",
+      "Authentication & RBAC",
+    ],
   },
   {
-    category: "Languages",
+    category: "Databases & Storage",
     skills: [
-      "Java", "JavaScript", "Python", "C++", "Go", "TypeScript"
-    ]
+      "MongoDB",
+      "PostgreSQL",
+      "Supabase",
+      "SQL",
+      "Schema Design",
+    ],
   },
   {
-    category: "Version Control & CI/CD",
+    category: "AI & Intelligent Systems",
     skills: [
-      "Git", "GitHub"
-    ]
+      "Gemini API",
+      "Ollama / Local LLMs",
+      "AI Automation",
+      "Lead Extraction (Apify)",
+      "LLM-based Generation",
+      "AI Integration",
+    ],
   },
   {
-    category: "Cloud & Hosting",
+    category: "DevOps & Tools",
     skills: [
-      "Vercel", "Netlify", "Render", "Github Pages (gh-pages)", // "AWS (basic)"
-    ]
+      "Git & GitHub",
+      "Docker",
+      "Linux",
+      "Shell Scripting",
+      "VS Code",
+      "Postman",
+    ],
   },
-  // {
-  //   category: "Tools & Design",
-  //   skills: [
-  //     "VS Code", "Docker", "Figma", "Postman", "Sublime Text"
-  //   ]
-  // },
   {
-    category: "Data Analysis & Tools",
+    category: "Testing & Build",
     skills: [
-      "Pandas", "NumPy", "Matplotlib", "Seaborn", "Excel", "Jupyter Notebook",
-      "VS Code", "Docker", "Figma", "Postman", "Sublime Text"
-    ]
-  }
+      "Google Test (gtest)",
+      "CMake",
+      "Unit Testing",
+      "Integration Testing",
+      "Debugging",
+      "CI/CD Concepts",
+    ],
+  },
 ];
 
+/* =========================
+   SOCIAL LINKS
+========================= */
 export const socialLinks = [
-  { href: 'https://linkedin.com/in/kappalasaimohith', label: 'LinkedIn', icon: <FaLinkedin /> },
-  { href: 'https://github.com/kappalasaimohith', label: 'GitHub', icon: <FaGithub /> },
-  { href: 'https://x.com/KappalaSaiMohit', label: 'Twitter', icon: <FaXTwitter /> }, 
-  { href: 'https://instagram.com/saimohithk', label: 'Instagram', icon: <FaInstagram /> },
-  // { href: 'https://t.me/kappalasaimohith', label: 'Telegram', icon: <FaTelegram /> },
-  // { href: 'https://wa.me/917569400290', label: 'WhatsApp', icon: <FaWhatsapp /> },
+  {
+    href: "https://linkedin.com/in/kappalasaimohith",
+    label: "LinkedIn",
+    icon: <FaLinkedin />,
+  },
+  {
+    href: "https://github.com/kappalasaimohith",
+    label: "GitHub",
+    icon: <FaGithub />,
+  },
+  {
+    href: "https://discord.com/users/kappalasaimohith",
+    label: "Discord",
+    icon: <FaDiscord />,
+  },
+  {
+    href: "https://x.com/KappalaSaiMohit",
+    label: "Twitter",
+    icon: <FaXTwitter />,
+  },
+  {
+    href: "https://instagram.com/saimohithk",
+    label: "Instagram",
+    icon: <FaInstagram />,
+  },
 ];
 
-export const info = {
-  greeting: "Hello, I'm ",
-  name: 'Sai Mohith Kappala',
-  more: 'I love building amazing web experiences',
-};
-
-export const technologies = [
-    "JavaScript (ES6+)",
-    "React",
-    "Node.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "MongoDB",
-    "Next.js",
-    "Go",
-  ];
+/* =========================
+   CONTACT
+========================= */
+export const email = "kappalasaimohith2003@gmail.com";
 
 export const contact = [
   {
-    label: 'Email',
-    value: 'kappalasaimohith2003@gmail.com',
-    href: 'mailto:kappalsaimohith2003@gmail.com',
+    label: "Email",
+    value: email,
+    href: `mailto:${email}`,
   },
   {
-    header: 'Get in Touch',
+    header: "Get in Touch",
   },
   {
-    description: `I'm currently open to new opportunities. Whether you have a question, a project in mind, or just want to say hi, feel free to reach out and I'll do my best to get back to you!`,
+    description:
+      "I'm currently open to new opportunities. Feel free to reach out if you have a project, question, or just want to connect.",
   },
-]
+];
 
-export const email = 'kappalasaimohith2003@gmail.com';
+/* =========================
+    REPO URL
+========================= */
+export const repoUrl = "https://github.com/kappalasaimohith/kappalasaimohith.github.io";

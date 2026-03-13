@@ -1,50 +1,73 @@
 import { experiences } from "./data/data";
-import { useMultipleInView } from "../hooks/use-in-view";
-import clsx from "clsx";
+import { motion } from "framer-motion";
 
 const Experience = () => {
-  const [refs, inViews] = useMultipleInView(experiences.length, 0.3);
-
   return (
-  <section id="experience" className="py-16 bg-navy-dark scroll-offset-mobile">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-heading">Experience</h2>
+    <section id="experience" className="py-20 bg-navy-dark overflow-hidden">
+      <div className="container mx-auto px-6">
+        <motion.h2
+          className="section-heading mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >Where I've Worked
+        </motion.h2>
 
-        <div className="space-y-16 mt-12">
-          {experiences.map((experience, index) => (
-            <div
-              key={index}
-              ref={(el) => (refs.current[index] = el)}
-              className={clsx(
-                "transform transition-all duration-300 delay-150 ease-out bg-navy-dark p-6 rounded-lg shadow-lg border border-slate/10 hover:border-highlight/20 hover:border-highlight hover:shadow-[0_0_10px_2px] hover:shadow-highlight",
-                {
-                  "opacity-0 translate-y-10": !inViews[index],
-                  "opacity-100 translate-y-0": inViews[index],
-                }
-              )}
-            >
-              <h3 className="text-2xl font-bold text-slate-lighter mb-3">
-                {experience.jobTitle}
-              </h3>
-              <p className="text-slate-light mb-1">
-                <span className="text-highlight">{experience.company}</span> | {experience.duration}
-              </p>
-              <div className="mt-4">
-                {Array.isArray(experience.description) ? (
-                  <ul className="list-none space-y-2">
-                    {experience.description.map((point, i) => (
-                      <li key={i} className="flex items-start text-slate-light">
-                        <span className="text-highlight mr-2">▹</span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-slate-light">{experience.description}</p>
-                )}
-              </div>
-            </div>
-          ))}
+        <div className="relative max-w-4xl mx-auto">
+          <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-px bg-slate/20" />
+
+          <div className="space-y-12">
+            {experiences.map((experience, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`relative flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""
+                  } items-start md:items-center gap-8`}
+              >
+                <div className="absolute left-[-5px] md:left-1/2 md:transform md:-translate-x-1/2 w-2.5 h-2.5 bg-highlight rounded-full border-4 border-navy-dark z-10" />
+
+                {/* Date Side (Desktop) */}
+                <div className={`hidden md:block w-1/2 text-slate-light font-mono text-sm ${index % 2 === 0 ? "text-right pr-12" : "text-left pl-12"
+                  }`}>
+                  {experience.duration}
+                </div>
+
+                {/* Content Side */}
+                <div className={`w-full md:w-1/2 pl-8 md:pl-0 ${index % 2 === 0 ? "md:pl-12" : "md:pr-12"
+                  }`}>
+                  <div className="bg-navy-light p-6 rounded-lg shadow-lg border border-slate/10 hover:border-highlight/30 transition-colors duration-300 relative group">
+                    <div className="absolute top-0 left-0 w-1 h-full bg-highlight/50 rounded-l-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    <h3 className="text-xl font-bold text-slate-lighter mb-1">
+                      {experience.jobTitle}
+                    </h3>
+                    <p className="text-highlight font-mono text-sm mb-4">
+                      {experience.company} <span className="md:hidden">| {experience.duration}</span>
+                    </p>
+
+                    <div className="text-slate-light text-sm">
+                      {Array.isArray(experience.description) ? (
+                        <ul className="list-none space-y-2">
+                          {experience.description.map((point, i) => (
+                            <li key={i} className="flex items-start">
+                              <span className="text-highlight mr-2 mt-1.5 text-xs">▹</span>
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p>{experience.description}</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui_components/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 const menuItems = ["about", "experience", "projects", "skills", "contact"];
 
@@ -12,15 +13,25 @@ const NavBar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [mobileMenuOpen]);
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      const yOffset = -80;
+      const y =
+        section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
       setMobileMenuOpen(false);
     }
   };
@@ -28,12 +39,6 @@ const NavBar = () => {
   const handleResumeClick = () => {
     setShowResume(true);
     document.title = "My Resume";
-    const link = document.createElement("a");
-    link.href = "/Sai_Mohith_Kappala_Resume.pdf";
-    link.download = "Sai_Mohith_Kappala_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   const closeResume = () => {
@@ -44,114 +49,141 @@ const NavBar = () => {
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 w-full z-50 transition-[background,padding] duration-300 ${
           isScrolled
-            ? "bg-transparent backdrop-blur-2xl py-6 shadow-lg"
-            : "bg-navy-dark py-5"
+            ? "bg-navy-dark backdrop-blur-md shadow-lg border-b border-highlight/10 py-3"
+            : "bg-navy-dark/0 py-6"
         }`}
       >
-        <div className="relative container mx-auto font-bold px-4 py-2 md:px-6 flex items-center justify-between">
+        <div className="w-full px-8 md:container md:mx-auto md:px-6 flex items-center justify-between">
+          <span
+            className="text-highlight font-mono text-2xl md:text-xl font-semibold tracking-wide cursor-pointer"
+            onClick={() =>
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            }
+          >
+            &lt;SaiMohith /&gt;
+          </span>
 
-          <div className="flex-1 hidden md:block" />
-
-          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center space-x-2">
-            <nav className="flex items-center space-x-1">
-              {menuItems.map((id) => (
-                <button
-                  key={id}
-                  onClick={() => scrollToSection(id)}
-                  className="nav-link"
-                >
-                  {id.charAt(0).toUpperCase() + id.slice(1)}
-                </button>
-              ))}
-            </nav>
+          <div className="hidden md:flex items-center space-x-6">
+            {menuItems.map((id, index) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className="text-slate-light hover:text-highlight font-mono text-sm"
+              >
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </button>
+            ))}
             <Button
               variant="outline"
               size="sm"
-              className="border-highlight text-highlight hover:bg-highlight/10 hover:text-highlight hover:shadow-[0_0_10px_2px] hover:shadow-highlight transition-shadow duration-300"
+              className="border-highlight text-highlight"
               onClick={handleResumeClick}
             >
               Resume
             </Button>
           </div>
 
-          <div className="flex w-full justify-end md:hidden">
-            <button
-              className="text-slate-light hover:text-highlight"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
+          <button
+            className="md:hidden z-[60] p-2 text-highlight"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="transition-transform duration-3000 ease-in-out"
-              >
-                {mobileMenuOpen ? (
-                  <path d="M18 6L6 18M6 6l12 12" />
-                ) : (
-                  <>
-                    <path d="M3 6h18" />
-                    <path d="M3 12h18" />
-                    <path d="M3 18h18" />
-                  </>
-                )}
-              </svg>
-            </button>
-          </div>
+              {mobileMenuOpen ? (
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </>
+              ) : (
+                <>
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </>
+              )}
+            </svg>
+          </button>
         </div>
+      </header>
 
+      <AnimatePresence>
         {mobileMenuOpen && (
-          <div className="absolute top-full w-60 right-0 bg-navy-dark/95 backdrop-blur-lg md:hidden border-b border-slate/80 animate-fade-in z-40 rounded-lg">
-            <nav className="flex flex-col">
-              {menuItems.map((id) => (
+          <>
+            <motion.div
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+            />
+
+            <motion.div
+              className="fixed top-0 right-0 h-full w-full max-w-xs bg-navy-dark z-50 flex flex-col items-center justify-center space-y-8"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.3 }}
+            >
+              {menuItems.map((id, index) => (
                 <button
                   key={id}
                   onClick={() => scrollToSection(id)}
-                  className="nav-link text-center border-b border-slate/10 last:border-0 py-2"
+                  className="text-xl text-slate-light hover:text-highlight font-mono"
                 >
+                  <span className="text-highlight block text-sm mb-1">
+                    0{index + 1}.
+                  </span>
                   {id.charAt(0).toUpperCase() + id.slice(1)}
                 </button>
               ))}
+
               <Button
                 variant="outline"
-                size="sm"
-                className="border-highlight text-highlight hover:bg-highlight/10 hover:text-highlight hover:shadow-[0_0_10px_2px] hover:shadow-highlight transition-shadow duration-300"
+                size="lg"
+                className="border-highlight text-highlight"
                 onClick={handleResumeClick}
               >
                 Resume
               </Button>
-            </nav>
-          </div>
+            </motion.div>
+          </>
         )}
-      </header>
+      </AnimatePresence>
 
       {showResume && (
-        <div className="fixed inset-0 z-50 bg-navy-dark bg-opacity-95 backdrop-blur-md flex flex-col items-center justify-start pt-4 px-4">
-          <div className="flex justify-between items-center w-full max-w-6xl mb-4">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-highlight font-bold text-center sm:text-left">
-              Sai_Mohith_Kappala_Resume
-            </h2>
-            <button
-              onClick={closeResume}
-              className="text-slate-light hover:text-red-500 text-xl"
-              aria-label="Close Resume"
-            >
-              ✕
-            </button>
+        <div className="fixed inset-0 z-[100] bg-navy-dark/95 backdrop-blur-md flex flex-col items-center justify-center p-4">
+          <div className="w-full max-w-5xl h-full flex flex-col">
+            <div className="flex justify-between items-center mb-4 px-2">
+              <h2 className="text-xl text-highlight font-mono font-bold">
+                Resume.pdf
+              </h2>
+              <button
+                onClick={closeResume}
+                className="text-slate-light hover:text-red-500"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="flex-1 w-full bg-white/5 rounded-lg overflow-hidden">
+              <iframe
+                src="/Sai_Mohith_Kappala_Resume.pdf"
+                className="w-full h-full"
+                title="Resume PDF"
+              />
+            </div>
           </div>
-          <iframe
-            src="/Sai_Mohith_Kappala_Resume.pdf"
-            className="w-full max-w-6xl h-[90vh] border border-highlight rounded-md shadow-lg"
-            title="Resume PDF"
-          />
         </div>
       )}
     </>
