@@ -40,7 +40,7 @@ export const technologies = [
 ========================= */
 export const experiences = [
   {
-    jobTitle: "AI Engineering Intern",
+    jobTitle: "AI Engineer Intern",
     company: "Deep Learning Titans",
     duration: "Nov 2025 – Dec 2025",
     description: [
